@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CV Generator – Gradient Themes</title>
+<title>CV Generator – Background Themes</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{
@@ -10,25 +13,35 @@
     font-family: Arial, sans-serif;
 }
 
+/* ================= CV VARIABLES ================= */
 :root{
     --main:#2563eb;
     --bg:#ffffff;
-    --grad: linear-gradient(135deg, #2563eb, #4f46e5);
+    --grad:linear-gradient(135deg,#2563eb,#4f46e5);
 }
 
-/* SOLID THEMES */
+/* ================= CV THEMES ================= */
 .blue{ --main:#2563eb; --grad:linear-gradient(135deg,#2563eb,#4f46e5); }
 .green{ --main:#16a34a; --grad:linear-gradient(135deg,#16a34a,#22c55e); }
 .purple{ --main:#7c3aed; --grad:linear-gradient(135deg,#7c3aed,#a855f7); }
-
-/* GRADIENT THEMES */
 .sunset{ --grad:linear-gradient(135deg,#ff512f,#dd2476); }
 .ocean{ --grad:linear-gradient(135deg,#2193b0,#6dd5ed); }
 .fire{ --grad:linear-gradient(135deg,#f12711,#f5af19); }
 .midnight{ --grad:linear-gradient(135deg,#0f2027,#203a43,#2c5364); }
 
+/* ================= BACKGROUND THEMES ================= */
+.bg-light{ background:#f4f6f8; }
+.bg-dark{ background:#0f172a; color:white; }
+.bg-gradient{ background:linear-gradient(120deg,#e0e7ff,#fdf2f8); }
+.bg-pattern{
+    background:
+      radial-gradient(circle at 10% 20%, #e0e7ff 0%, transparent 20%),
+      radial-gradient(circle at 80% 30%, #fde68a 0%, transparent 25%),
+      #f8fafc;
+}
+
+/* ================= LAYOUT ================= */
 body{
-    background:#f4f6f8;
     padding:20px;
 }
 
@@ -44,19 +57,19 @@ h1{
     gap:20px;
 }
 
-.form-box, .cv-box{
+.form-box,.cv-box{
     width:50%;
     background:var(--bg);
     padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 12px rgba(0,0,0,0.15);
+    border-radius:14px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* CV HEADER */
+/* ================= CV HEADER ================= */
 .cv-header{
     background:var(--grad);
     padding:20px;
-    border-radius:10px;
+    border-radius:14px;
     color:white;
     display:flex;
     gap:15px;
@@ -67,41 +80,53 @@ h1{
     width:120px;
     height:120px;
     border-radius:50%;
-    border:4px solid white;
+    border:5px solid white;
     object-fit:cover;
 }
 
-input, textarea, select{
+/* ================= FORM ================= */
+label{
+    font-weight:bold;
+}
+
+input,textarea,select{
     width:100%;
-    padding:8px;
+    padding:9px;
     margin-bottom:12px;
-    border-radius:4px;
+    border-radius:6px;
     border:1px solid #ccc;
 }
 
 button{
     width:100%;
-    padding:10px;
-    background:var(--main);
+    padding:12px;
+    background:var(--grad);
     color:white;
     border:none;
     font-size:16px;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     margin-bottom:8px;
 }
 
-button:hover{opacity:0.9}
+button i{ margin-right:6px; }
+button:hover{ opacity:0.9; }
 
+/* ================= SECTIONS ================= */
 .section{
-    margin-top:15px;
+    margin-top:18px;
+    padding-left:12px;
+    border-left:4px solid var(--main);
 }
 
 .section h3{
     color:var(--main);
-    border-bottom:2px solid var(--main);
+    margin-bottom:6px;
 }
 
+.section h3 i{ margin-right:8px; }
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
     .container{flex-direction:column;}
     .form-box,.cv-box{width:100%;}
@@ -109,50 +134,60 @@ button:hover{opacity:0.9}
 </style>
 </head>
 
-<body class="blue">
+<body class="blue bg-gradient">
 
-<h1>🎨 CV Generator with Gradient Themes</h1>
+<h1>CV Generator with Background Themes</h1>
 
 <div class="container">
 
 <!-- FORM -->
 <div class="form-box">
-<h2>Customize CV</h2>
+<h2><i class="fa-solid fa-sliders"></i> Customize CV</h2>
 
+<label><i class="fa-solid fa-palette"></i> CV Theme</label>
 <select onchange="setTheme(this.value)">
-    <optgroup label="Solid Themes">
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="purple">Purple</option>
-    </optgroup>
-    <optgroup label="Gradient Themes">
-        <option value="sunset">Sunset</option>
-        <option value="ocean">Ocean</option>
-        <option value="fire">Fire</option>
-        <option value="midnight">Midnight</option>
-    </optgroup>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+    <option value="purple">Purple</option>
+    <option value="sunset">Sunset</option>
+    <option value="ocean">Ocean</option>
+    <option value="fire">Fire</option>
+    <option value="midnight">Midnight</option>
 </select>
 
-<input id="name" placeholder="Full Name">
-<input id="job" placeholder="Job Title">
-<input id="email" placeholder="Email">
-<input id="phone" placeholder="Phone Number">
+<label><i class="fa-solid fa-image"></i> Background Theme</label>
+<select onchange="setBackground(this.value)">
+    <option value="bg-light">Light</option>
+    <option value="bg-dark">Dark</option>
+    <option value="bg-gradient" selected>Gradient</option>
+    <option value="bg-pattern">Pattern</option>
+</select>
 
-<label><b>Upload Photo</b></label>
+<input id="name" placeholder="👤 Full Name">
+<input id="job" placeholder="💼 Job Title">
+<input id="email" placeholder="📧 Email">
+<input id="phone" placeholder="📞 Phone Number">
+
+<label><i class="fa-solid fa-camera"></i> Upload Photo</label>
 <input type="file" id="photo" accept="image/*">
 
-<textarea id="summary" placeholder="Professional Summary"></textarea>
-<textarea id="skills" placeholder="Skills"></textarea>
-<textarea id="education" placeholder="Education"></textarea>
-<textarea id="experience" placeholder="Experience"></textarea>
+<textarea id="summary" placeholder="📝 Professional Summary"></textarea>
+<textarea id="skills" placeholder="🛠 Skills"></textarea>
+<textarea id="education" placeholder="🎓 Education"></textarea>
+<textarea id="experience" placeholder="🧳 Experience"></textarea>
 
-<button onclick="generateCV()">Generate CV</button>
-<button onclick="downloadPDF()">Download PDF</button>
+<button onclick="generateCV()">
+<i class="fa-solid fa-wand-magic-sparkles"></i> Generate CV
+</button>
+
+<button onclick="downloadPDF()">
+<i class="fa-solid fa-file-pdf"></i> Download PDF
+</button>
 </div>
 
 <!-- CV -->
 <div class="cv-box" id="cv">
-<p>Your stylish CV preview will appear here ✨</p>
+<p>✨ Your CV preview will appear here.</p>
 </div>
 
 </div>
@@ -162,6 +197,7 @@ button:hover{opacity:0.9}
 <script>
 let photoData="";
 
+/* PHOTO */
 photo.addEventListener("change",()=>{
     const file=photo.files[0];
     if(file){
@@ -171,45 +207,58 @@ photo.addEventListener("change",()=>{
     }
 });
 
+/* CV THEME */
 function setTheme(theme){
-    document.body.className=theme;
+    document.body.className =
+        document.body.className.replace(/blue|green|purple|sunset|ocean|fire|midnight/g,"") +
+        " " + theme;
 }
 
+/* BACKGROUND THEME */
+function setBackground(bg){
+    document.body.className =
+        document.body.className.replace(/bg-light|bg-dark|bg-gradient|bg-pattern/g,"") +
+        " " + bg;
+}
+
+/* GENERATE CV */
 function generateCV(){
     cv.innerHTML=`
         <div class="cv-header">
             <img src="${photoData}" class="photo">
             <div>
-                <h2>${name.value}</h2>
-                <strong>${job.value}</strong>
-                <p>${email.value} | ${phone.value}</p>
+                <h2><i class="fa-solid fa-user"></i> ${name.value}</h2>
+                <strong><i class="fa-solid fa-briefcase"></i> ${job.value}</strong>
+                <p><i class="fa-solid fa-envelope"></i> ${email.value} |
+                   <i class="fa-solid fa-phone"></i> ${phone.value}</p>
             </div>
         </div>
 
         <div class="section">
-            <h3>Summary</h3>
+            <h3><i class="fa-solid fa-file-lines"></i> Summary</h3>
             <p>${summary.value}</p>
         </div>
 
         <div class="section">
-            <h3>Skills</h3>
+            <h3><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h3>
             <p>${skills.value}</p>
         </div>
 
         <div class="section">
-            <h3>Education</h3>
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
             <p>${education.value}</p>
         </div>
 
         <div class="section">
-            <h3>Experience</h3>
+            <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
             <p>${experience.value}</p>
         </div>
     `;
 }
 
+/* PDF */
 function downloadPDF(){
-    html2pdf().from(cv).save("Gradient_CV.pdf");
+    html2pdf().from(cv).save("Advanced_CV.pdf");
 }
 </script>
 
