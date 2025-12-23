@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CV Generator – Background Themes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Generator – Professional Resume Builder</title>
 
 <!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -10,7 +11,7 @@
 <style>
 *{
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ================= CV VARIABLES ================= */
@@ -18,6 +19,8 @@
     --main:#2563eb;
     --bg:#ffffff;
     --grad:linear-gradient(135deg,#2563eb,#4f46e5);
+    --text:#1f2937;
+    --light-text:#6b7280;
 }
 
 /* ================= CV THEMES ================= */
@@ -28,6 +31,8 @@
 .ocean{ --grad:linear-gradient(135deg,#2193b0,#6dd5ed); }
 .fire{ --grad:linear-gradient(135deg,#f12711,#f5af19); }
 .midnight{ --grad:linear-gradient(135deg,#0f2027,#203a43,#2c5364); }
+.teal{ --main:#0891b2; --grad:linear-gradient(135deg,#0891b2,#06b6d4); }
+.rose{ --main:#e11d48; --grad:linear-gradient(135deg,#e11d48,#f43f5e); }
 
 /* ================= BACKGROUND THEMES ================= */
 .bg-light{ background:#f4f6f8; }
@@ -43,151 +48,405 @@
 /* ================= LAYOUT ================= */
 body{
     padding:20px;
+    min-height:100vh;
 }
 
 h1{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:10px;
+    font-size:2.5em;
+    background:var(--grad);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.subtitle{
+    text-align:center;
+    color:var(--light-text);
+    margin-bottom:30px;
+    font-size:1.1em;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
     display:flex;
-    gap:20px;
+    gap:30px;
 }
 
 .form-box,.cv-box{
     width:50%;
     background:var(--bg);
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+    transition:all 0.3s ease;
+}
+
+.form-box:hover{
+    box-shadow:0 25px 50px rgba(0,0,0,0.15);
+}
+
+.form-box h2{
+    color:var(--text);
+    margin-bottom:20px;
+    font-size:1.5em;
+    display:flex;
+    align-items:center;
+}
+
+.form-box h2 i{
+    margin-right:10px;
+    background:var(--grad);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
 }
 
 /* ================= CV HEADER ================= */
 .cv-header{
     background:var(--grad);
-    padding:20px;
-    border-radius:14px;
+    padding:30px;
+    border-radius:16px;
     color:white;
     display:flex;
-    gap:15px;
+    gap:20px;
     align-items:center;
+    margin-bottom:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.photo-container{
+    flex-shrink:0;
 }
 
 .photo{
-    width:120px;
-    height:120px;
+    width:140px;
+    height:140px;
     border-radius:50%;
-    border:5px solid white;
+    border:6px solid white;
     object-fit:cover;
+    display:block;
+}
+
+.photo-placeholder{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:6px solid white;
+    background:rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3em;
+}
+
+.cv-header-info h2{
+    margin:0 0 8px 0;
+    font-size:1.8em;
+}
+
+.cv-header-info strong{
+    display:block;
+    font-size:1.1em;
+    margin-bottom:10px;
+    opacity:0.95;
+}
+
+.cv-header-info p{
+    margin:0;
+    font-size:0.95em;
+    opacity:0.9;
 }
 
 /* ================= FORM ================= */
+.form-group{
+    margin-bottom:18px;
+}
+
 label{
-    font-weight:bold;
+    font-weight:600;
+    color:var(--text);
+    display:block;
+    margin-bottom:8px;
+    font-size:0.95em;
 }
 
 input,textarea,select{
     width:100%;
-    padding:9px;
-    margin-bottom:12px;
-    border-radius:6px;
-    border:1px solid #ccc;
+    padding:12px;
+    margin-bottom:0;
+    border-radius:8px;
+    border:2px solid #e5e7eb;
+    font-size:1em;
+    transition:all 0.3s ease;
+    color:var(--text);
+}
+
+input:focus,textarea:focus,select:focus{
+    outline:none;
+    border-color:var(--main);
+    box-shadow:0 0 0 3px rgba(37,99,235,0.1);
+}
+
+textarea{
+    resize:vertical;
+    min-height:80px;
+    font-family:inherit;
 }
 
 button{
     width:100%;
-    padding:12px;
+    padding:14px;
     background:var(--grad);
     color:white;
     border:none;
-    font-size:16px;
+    font-size:1em;
+    font-weight:600;
     border-radius:8px;
     cursor:pointer;
-    margin-bottom:8px;
+    margin-bottom:12px;
+    transition:all 0.3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
 }
 
-button i{ margin-right:6px; }
-button:hover{ opacity:0.9; }
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+button:active{
+    transform:translateY(0);
+}
+
+button i{ margin:0; }
 
 /* ================= SECTIONS ================= */
 .section{
-    margin-top:18px;
-    padding-left:12px;
-    border-left:4px solid var(--main);
+    margin-bottom:25px;
+    padding:20px;
+    border-left:5px solid var(--main);
+    background:#f9fafb;
+    border-radius:8px;
+    transition:all 0.3s ease;
+}
+
+.section:hover{
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transform:translateX(5px);
 }
 
 .section h3{
     color:var(--main);
-    margin-bottom:6px;
+    margin:0 0 12px 0;
+    font-size:1.2em;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.section h3 i{ margin-right:8px; }
+.section h3 i{ 
+    font-size:1.3em;
+}
+
+.section p{
+    color:var(--text);
+    line-height:1.6;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    margin:0;
+}
+
+.empty-cv{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--light-text);
+    font-size:1.1em;
+}
+
+.cv-box.has-content{
+    background:var(--bg);
+}
+
+/* ================= THEME SELECTOR ================= */
+.theme-section{
+    background:#f0f4f8;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.theme-section label{
+    margin-bottom:10px;
+}
+
+select{
+    cursor:pointer;
+}
 
 /* ================= RESPONSIVE ================= */
-@media(max-width:900px){
-    .container{flex-direction:column;}
-    .form-box,.cv-box{width:100%;}
+@media(max-width:1024px){
+    .container{
+        flex-direction:column;
+        gap:20px;
+    }
+    .form-box,.cv-box{
+        width:100%;
+    }
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:1.8em;
+    }
+    .cv-header{
+        flex-direction:column;
+        text-align:center;
+    }
+    .photo-container{
+        flex-shrink:0;
+    }
+    button{
+        padding:12px;
+    }
+    .form-box,.cv-box{
+        padding:20px;
+    }
+}
+
+@media(max-width:480px){
+    body{
+        padding:10px;
+    }
+    h1{
+        font-size:1.5em;
+    }
+    .subtitle{
+        font-size:0.95em;
+    }
+    .form-box,.cv-box{
+        padding:15px;
+    }
+    .cv-header{
+        padding:20px;
+    }
+    .photo{
+        width:100px;
+        height:100px;
+    }
+    .photo-placeholder{
+        width:100px;
+        height:100px;
+        font-size:2.5em;
+    }
 }
 </style>
 </head>
 
 <body class="blue bg-gradient">
 
-<h1>CV Generator with Background Themes</h1>
+<h1><i class="fa-solid fa-file-pdf"></i> CV Generator</h1>
+<p class="subtitle">Create a professional resume in minutes</p>
 
 <div class="container">
 
 <!-- FORM -->
 <div class="form-box">
-<h2><i class="fa-solid fa-sliders"></i> Customize CV</h2>
+<h2><i class="fa-solid fa-sliders"></i> Customize Your CV</h2>
 
-<label><i class="fa-solid fa-palette"></i> CV Theme</label>
-<select onchange="setTheme(this.value)">
-    <option value="blue">Blue</option>
-    <option value="green">Green</option>
-    <option value="purple">Purple</option>
-    <option value="sunset">Sunset</option>
-    <option value="ocean">Ocean</option>
-    <option value="fire">Fire</option>
-    <option value="midnight">Midnight</option>
-</select>
+<div class="theme-section">
+    <label><i class="fa-solid fa-palette"></i> CV Theme</label>
+    <select onchange="setTheme(this.value)">
+        <option value="blue">💙 Blue</option>
+        <option value="green">💚 Green</option>
+        <option value="purple">💜 Purple</option>
+        <option value="sunset">🌅 Sunset</option>
+        <option value="ocean">🌊 Ocean</option>
+        <option value="fire">🔥 Fire</option>
+        <option value="midnight">🌙 Midnight</option>
+        <option value="teal">🏒 Teal</option>
+        <option value="rose">🌹 Rose</option>
+    </select>
 
-<label><i class="fa-solid fa-image"></i> Background Theme</label>
-<select onchange="setBackground(this.value)">
-    <option value="bg-light">Light</option>
-    <option value="bg-dark">Dark</option>
-    <option value="bg-gradient" selected>Gradient</option>
-    <option value="bg-pattern">Pattern</option>
-</select>
+    <label style="margin-top:12px;"><i class="fa-solid fa-image"></i> Background Theme</label>
+    <select onchange="setBackground(this.value)">
+        <option value="bg-light">☀️ Light</option>
+        <option value="bg-dark">🌑 Dark</option>
+        <option value="bg-gradient" selected>🎨 Gradient</option>
+        <option value="bg-pattern">✨ Pattern</option>
+    </select>
+</div>
 
-<input id="name" placeholder="👤 Full Name">
-<input id="job" placeholder="💼 Job Title">
-<input id="email" placeholder="📧 Email">
-<input id="phone" placeholder="📞 Phone Number">
+<div class="form-group">
+    <label><i class="fa-solid fa-user"></i> Full Name</label>
+    <input id="name" placeholder="Enter your full name" oninput="validateForm()">
+</div>
 
-<label><i class="fa-solid fa-camera"></i> Upload Photo</label>
-<input type="file" id="photo" accept="image/*">
+<div class="form-group">
+    <label><i class="fa-solid fa-briefcase"></i> Job Title</label>
+    <input id="job" placeholder="e.g., Software Engineer, Designer" oninput="validateForm()">
+</div>
 
-<textarea id="summary" placeholder="📝 Professional Summary"></textarea>
-<textarea id="skills" placeholder="🛠 Skills"></textarea>
-<textarea id="education" placeholder="🎓 Education"></textarea>
-<textarea id="experience" placeholder="🧳 Experience"></textarea>
+<div class="form-group">
+    <label><i class="fa-solid fa-envelope"></i> Email</label>
+    <input id="email" placeholder="your.email@example.com" oninput="validateForm()">
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+    <input id="phone" placeholder="+1 (555) 123-4567" oninput="validateForm()">
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-image"></i> Upload Photo</label>
+    <input type="file" id="photo" accept="image/*" onchange="previewPhoto()">
+    <small style="color:var(--light-text);">Optional: Upload a square photo for best results</small>
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-file-lines"></i> Professional Summary</label>
+    <textarea id="summary" placeholder="Write a brief professional summary about yourself..."></textarea>
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-screwdriver-wrench"></i> Skills</label>
+    <textarea id="skills" placeholder="List your skills (e.g., JavaScript, React, Python, etc.)"></textarea>
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-graduation-cap"></i> Education</label>
+    <textarea id="education" placeholder="Your educational background and qualifications..."></textarea>
+</div>
+
+<div class="form-group">
+    <label><i class="fa-solid fa-briefcase"></i> Experience</label>
+    <textarea id="experience" placeholder="Your professional work experience..."></textarea>
+</div>
 
 <button onclick="generateCV()">
 <i class="fa-solid fa-wand-magic-sparkles"></i> Generate CV
 </button>
 
 <button onclick="downloadPDF()">
-<i class="fa-solid fa-file-pdf"></i> Download PDF
+<i class="fa-solid fa-file-pdf"></i> Download as PDF
+</button>
+
+<button onclick="resetForm()" style="background:linear-gradient(135deg,#6b7280,#9ca3af);">
+<i class="fa-solid fa-arrow-rotate-left"></i> Reset Form
 </button>
 </div>
 
-<!-- CV -->
+<!-- CV PREVIEW -->
 <div class="cv-box" id="cv">
-<p>✨ Your CV preview will appear here.</p>
+<div class="empty-cv">
+    <p style="font-size:2em; margin-bottom:10px;">👋</p>
+    <p><strong>Your CV preview will appear here</strong></p>
+    <p style="font-size:0.9em;">Fill in the form on the left and click "Generate CV" to see your professional resume.</p>
+</div>
 </div>
 
 </div>
@@ -195,71 +454,201 @@ button:hover{ opacity:0.9; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <script>
-let photoData="";
+let photoData = "";
 
-/* PHOTO */
-photo.addEventListener("change",()=>{
-    const file=photo.files[0];
-    if(file){
-        const reader=new FileReader();
-        reader.onload=()=>photoData=reader.result;
+/* PHOTO UPLOAD & PREVIEW */
+const photo = document.getElementById('photo');
+photo.addEventListener("change", () => {
+    const file = photo.files[0];
+    if (file) {
+        const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!validTypes.includes(file.type)) {
+            alert('Please upload a valid image file (JPG, PNG, GIF, or WebP)');
+            photo.value = '';
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => photoData = reader.result;
         reader.readAsDataURL(file);
     }
 });
 
+function previewPhoto() {
+    const file = photo.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            photoData = reader.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+/* FORM VALIDATION */
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const job = document.getElementById('job').value.trim();
+    const email = document.getElementById('email').value.trim();
+    
+    const generateBtn = document.querySelector('button[onclick="generateCV()"]');
+    const isValid = name.length > 0 && job.length > 0 && email.length > 0;
+    
+    if (isValid) {
+        generateBtn.style.opacity = '1';
+        generateBtn.style.cursor = 'pointer';
+    } else {
+        generateBtn.style.opacity = '0.6';
+        generateBtn.style.cursor = 'not-allowed';
+    }
+}
+
 /* CV THEME */
-function setTheme(theme){
-    document.body.className =
-        document.body.className.replace(/blue|green|purple|sunset|ocean|fire|midnight/g,"") +
-        " " + theme;
+function setTheme(theme) {
+    const allThemes = ['blue', 'green', 'purple', 'sunset', 'ocean', 'fire', 'midnight', 'teal', 'rose'];
+    document.body.className = document.body.className.replace(
+        new RegExp(allThemes.join('|'), 'g'), ''
+    ) + ' ' + theme;
 }
 
 /* BACKGROUND THEME */
-function setBackground(bg){
-    document.body.className =
-        document.body.className.replace(/bg-light|bg-dark|bg-gradient|bg-pattern/g,"") +
-        " " + bg;
+function setBackground(bg) {
+    const allBgs = ['bg-light', 'bg-dark', 'bg-gradient', 'bg-pattern'];
+    document.body.className = document.body.className.replace(
+        new RegExp(allBgs.join('|'), 'g'), ''
+    ) + ' ' + bg;
 }
 
 /* GENERATE CV */
-function generateCV(){
-    cv.innerHTML=`
+function generateCV() {
+    const name = document.getElementById('name').value.trim();
+    const job = document.getElementById('job').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const summary = document.getElementById('summary').value.trim();
+    const skills = document.getElementById('skills').value.trim();
+    const education = document.getElementById('education').value.trim();
+    const experience = document.getElementById('experience').value.trim();
+    
+    // Validation
+    if (!name || !job || !email) {
+        alert('Please fill in at least Name, Job Title, and Email');
+        return;
+    }
+    
+    const cvBox = document.getElementById('cv');
+    const photoSection = photoData ? 
+        `<img src="${photoData}" class="photo" alt="Profile">` :
+        `<div class="photo-placeholder"><i class="fa-solid fa-user"></i></div>`;
+    
+    cvBox.innerHTML = `
         <div class="cv-header">
-            <img src="${photoData}" class="photo">
-            <div>
-                <h2><i class="fa-solid fa-user"></i> ${name.value}</h2>
-                <strong><i class="fa-solid fa-briefcase"></i> ${job.value}</strong>
-                <p><i class="fa-solid fa-envelope"></i> ${email.value} |
-                   <i class="fa-solid fa-phone"></i> ${phone.value}</p>
+            <div class="photo-container">
+                ${photoSection}
+            </div>
+            <div class="cv-header-info">
+                <h2><i class="fa-solid fa-user"></i> ${escapeHtml(name)}</h2>
+                <strong><i class="fa-solid fa-briefcase"></i> ${escapeHtml(job)}</strong>
+                <p>
+                    ${email ? `<i class="fa-solid fa-envelope"></i> ${escapeHtml(email)}` : ''}
+                    ${email && phone ? ' | ' : ''}
+                    ${phone ? `<i class="fa-solid fa-phone"></i> ${escapeHtml(phone)}` : ''}
+                </p>
             </div>
         </div>
 
-        <div class="section">
-            <h3><i class="fa-solid fa-file-lines"></i> Summary</h3>
-            <p>${summary.value}</p>
-        </div>
+        ${summary ? `
+            <div class="section">
+                <h3><i class="fa-solid fa-file-lines"></i> Professional Summary</h3>
+                <p>${escapeHtml(summary)}</p>
+            </div>
+        ` : ''}
 
-        <div class="section">
-            <h3><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h3>
-            <p>${skills.value}</p>
-        </div>
+        ${skills ? `
+            <div class="section">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h3>
+                <p>${escapeHtml(skills)}</p>
+            </div>
+        ` : ''}
 
-        <div class="section">
-            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-            <p>${education.value}</p>
-        </div>
+        ${education ? `
+            <div class="section">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                <p>${escapeHtml(education)}</p>
+            </div>
+        ` : ''}
 
-        <div class="section">
-            <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
-            <p>${experience.value}</p>
-        </div>
+        ${experience ? `
+            <div class="section">
+                <h3><i class="fa-solid fa-briefcase"></i> Work Experience</h3>
+                <p>${escapeHtml(experience)}</p>
+            </div>
+        ` : ''}
     `;
+    
+    cvBox.classList.add('has-content');
+    
+    // Scroll to CV preview on mobile
+    if (window.innerWidth < 1024) {
+        cvBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
-/* PDF */
-function downloadPDF(){
-    html2pdf().from(cv).save("Advanced_CV.pdf");
+/* UTILITY: ESCAPE HTML */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
+
+/* RESET FORM */
+function resetForm() {
+    if (confirm('Are you sure you want to reset the form?')) {
+        document.getElementById('name').value = '';
+        document.getElementById('job').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('photo').value = '';
+        document.getElementById('summary').value = '';
+        document.getElementById('skills').value = '';
+        document.getElementById('education').value = '';
+        document.getElementById('experience').value = '';
+        photoData = '';
+        
+        document.getElementById('cv').innerHTML = `
+            <div class="empty-cv">
+                <p style="font-size:2em; margin-bottom:10px;">👋</p>
+                <p><strong>Your CV preview will appear here</strong></p>
+                <p style="font-size:0.9em;">Fill in the form on the left and click "Generate CV" to see your professional resume.</p>
+            </div>
+        `;
+        document.getElementById('cv').classList.remove('has-content');
+        
+        validateForm();
+    }
+}
+
+/* PDF EXPORT */
+function downloadPDF() {
+    const cv = document.getElementById('cv');
+    if (cv.classList.contains('has-content')) {
+        const element = cv.cloneNode(true);
+        const opt = {
+            margin: 10,
+            filename: 'Professional_CV.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+        };
+        html2pdf().set(opt).from(element).save();
+    } else {
+        alert('Please generate your CV first before downloading!');
+    }
+}
+
+/* INITIALIZE */
+document.addEventListener('DOMContentLoaded', () => {
+    validateForm();
+});
 </script>
 
 </body>
